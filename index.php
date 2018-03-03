@@ -3,7 +3,7 @@
 include("config.php");
 session_start();
 if(isset($_SESSION['username'])){
-  header('location: home.php');
+  header('location: index.php');
 }
 ?>
 <!DOCTYPE html>
@@ -34,7 +34,7 @@ if(isset($_SESSION['username'])){
         <!--[if lt IE 7]>
             <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
         <![endif]-->
-        
+
 
         <!-- Navigation & Logo-->
         <div class="mainmenu-wrapper">
@@ -123,7 +123,7 @@ if(isset($_SESSION['username'])){
 				</div>
 			</div>
 		</div>
-        
+
         <div class="section">
 	    	<div class="container">
 				<div class="row">
@@ -180,7 +180,7 @@ if(isset($_SESSION['username'])){
 		    				<li><a href="page-faq.php">FAQ</a></li>
 		    			</ul>
 		    		</div>
-		    		
+
 		    		<div class="col-footer col-md-4 col-xs-6">
 		    			<h3>Contacts</h3>
 		    			<p class="contact-us-details">
