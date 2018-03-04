@@ -11,5 +11,4 @@ if (!$dbconnect) {
     exit;
 }
 
-//$selected = mysqli_select_db($database, $dbconnect) or die(mysqli_error());
 ?>

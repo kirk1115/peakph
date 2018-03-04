@@ -2515,6 +2515,19 @@ span.color-red {
     padding: 0;
   }
 }
+
+.header {
+  align-items: center;
+  display: flex;
+}
+
+.no-padding {
+  padding: 0px;
+}
+
+.no-margin {
+  margin: 0px;
+}
 /*--------------------------------------------------------------------------
 +	Extras Menu (Cart, Language, Login) Style
 --------------------------------------------------------------------------*/

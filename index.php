@@ -2,8 +2,11 @@
 //error_reporting(0);
 include("config.php");
 session_start();
-if(isset($_SESSION['username'])){
-  header('location: index.php');
+if(isset($_SESSION['ID'])){
+  header('location: home.php');
+}
+if (isset($_GET['Message'])) {
+    print '<script type="text/javascript">alert("' . $_GET['Message'] . '");</script>';
 }
 ?>
 <!DOCTYPE html>
@@ -129,14 +132,14 @@ if(isset($_SESSION['username'])){
 				<div class="row">
 					<div class="col-sm-8">
 						<div class="basic-login">
-							<form role="form" role="form">
+							<form role="form" method="POST" action="login.php">
 								<div class="form-group">
-		        				 	<label for="login-username"><i class="icon-user"></i> <b>Username or Email</b></label>
-									<input class="form-control" id="login-username" type="text" placeholder="">
+		        				 	<label for="login-username"><i class="icon-user"></i> <b>Username</b></label>
+									<input class="form-control" name="login-username" type="text" placeholder="">
 								</div>
 								<div class="form-group">
 		        				 	<label for="login-password"><i class="icon-lock"></i> <b>Password</b></label>
-									<input class="form-control" id="login-password" type="password" placeholder="">
+									<input class="form-control" name="login-password" type="password" placeholder="">
 								</div>
 								<div class="form-group">
 									<a href="page-password-reset.php" class="forgot-password">Forgot password?</a>
