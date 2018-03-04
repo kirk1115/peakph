@@ -1,12 +1,11 @@
 <?php
 //error_reporting(0);
-include("config.php");
+include("../includes/config.php");
 session_start();
 if(!isset($_SESSION['ID'])){
-  header('location: index.php');
+  header('location: ../index.php');
 }
-
-include("_header.php");
+include("../includes/_header.php");
 ?>
 		<!-- Page Title -->
 		<div class="section section-breadcrumbs">
@@ -32,23 +31,23 @@ include("_header.php");
 									<div class="date">30 JAN, 2013</div>
 								</div>
 								<div class="post-comments-count">
-									<a href="page-blog-post-right-sidebar.php" title="Show Comments"><i class="glyphicon glyphicon-comment icon-white"></i>11</a>
+									<a href="../page-blog-post-right-sidebar.php" title="Show Comments"><i class="glyphicon glyphicon-comment icon-white"></i>11</a>
 								</div>
 							</div>
 							<!-- End Post Info -->
 							<!-- Post Image -->
-							<a href="page-blog-post-right-sidebar.php"><img src="img/blog1.jpg" class="post-image" alt="Post Title"></a>
+							<a href="../page-blog-post-right-sidebar.php"><img src="../img/blog1.jpg" class="post-image" alt="Post Title"></a>
 							<!-- End Post Image -->
 							<!-- Post Title & Summary -->
 							<div class="post-title">
-								<h3><a href="page-blog-post-right-sidebar.php">Post Title</a></h3>
+								<h3><a href="../page-blog-post-right-sidebar.php">Post Title</a></h3>
 							</div>
 							<div class="post-summary">
 								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse mattis, nulla id pretium malesuada, dui est laoreet risus, ac rhoncus eros diam id odio. Duis elementum ligula eu ipsum condimentum accumsan.</p>
 							</div>
 							<!-- End Post Title & Summary -->
 							<div class="post-more">
-								<a href="page-blog-post-right-sidebar.php" class="btn btn-small">Read more</a>
+								<a href="../page-blog-post-right-sidebar.php" class="btn btn-small">Read more</a>
 							</div>
 						</div>
 					</div>
@@ -60,12 +59,12 @@ include("_header.php");
 									<div class="date">30 JAN, 2013</div>
 								</div>
 								<div class="post-comments-count">
-									<a href="page-blog-post-right-sidebar.php" title="Show Comments"><i class="glyphicon glyphicon-comment icon-white"></i>16</a>
+									<a href="../page-blog-post-right-sidebar.php" title="Show Comments"><i class="glyphicon glyphicon-comment icon-white"></i>16</a>
 								</div>
 							</div>
-							<a href="page-blog-post-right-sidebar.php"><img src="img/blog2.jpg" class="post-image" alt="Post Title"></a>
+							<a href="../page-blog-post-right-sidebar.php"><img src="../img/blog2.jpg" class="post-image" alt="Post Title"></a>
 							<div class="post-title">
-								<h3><a href="page-blog-post-right-sidebar.php">Another Post Title</a></h3>
+								<h3><a href="../page-blog-post-right-sidebar.php">Another Post Title</a></h3>
 							</div>
 							<div class="post-summary">
 								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse mattis, nulla id pretium malesuada, dui est laoreet risus, ac rhoncus eros diam id odio. Duis elementum ligula eu ipsum condimentum accumsan.</p>
@@ -85,7 +84,7 @@ include("_header.php");
 									<a href="page-blog-post-right-sidebar.php" title="Show Comments"><i class="glyphicon glyphicon-comment icon-white"></i>57</a>
 								</div>
 							</div>
-							<a href="page-blog-post-right-sidebar.php"><img src="img/blog3.jpg" class="post-image" alt="Post Title"></a>
+							<a href="../page-blog-post-right-sidebar.php"><img src="../img/blog3.jpg" class="post-image" alt="Post Title"></a>
 							<div class="post-title">
 								<h3><a href="page-blog-post-right-sidebar.php">Yet Another Post Title</a></h3>
 							</div>
@@ -189,16 +188,6 @@ include("_header.php");
 		    </div>
 	    </div>
 
-        <!-- Javascripts -->
-        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-        <script>window.jQuery || document.write('<script src="js/jquery-1.9.1.min.js"><\/script>')</script>
-        <script src="js/bootstrap.min.js"></script>
-        <script src="http://cdn.leafletjs.com/leaflet-0.5.1/leaflet.js"></script>
-        <script src="js/jquery.fitvids.js"></script>
-        <script src="js/jquery.sequence-min.js"></script>
-        <script src="js/jquery.bxslider.js"></script>
-        <script src="js/main-menu.js"></script>
-        <script src="js/template.js"></script>
-
+<?php include("../includes/_javascripts.php"); ?>
     </body>
 </html>

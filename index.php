@@ -1,9 +1,9 @@
 <?php
 //error_reporting(0);
-include("config.php");
+include("includes/config.php");
 session_start();
 if(isset($_SESSION['ID'])){
-  header('location: home.php');
+  header('location: views/home.php');
 }
 if (isset($_GET['Message'])) {
     print '<script type="text/javascript">alert("' . $_GET['Message'] . '");</script>';
@@ -132,7 +132,7 @@ if (isset($_GET['Message'])) {
 				<div class="row">
 					<div class="col-sm-8">
 						<div class="basic-login">
-							<form role="form" method="POST" action="login.php">
+							<form role="form" method="POST" action="services/login.php">
 								<div class="form-group">
 		        				 	<label for="login-username"><i class="icon-user"></i> <b>Username</b></label>
 									<input class="form-control" name="login-username" type="text" placeholder="">
@@ -153,7 +153,7 @@ if (isset($_GET['Message'])) {
 						<h4>ONLY THOSE WHO WILL RISK GOING TOO FAR CAN POSSIBLY FIND OUT HOW FAR THEY CAN GO.</h4>
 						<div class="clearfix"></div>
 						<div class="not-member">
-							<p>Not a member? <a href="page-register.php">Register here</a></p>
+							<p>Not a member? <a href="views/page-register.php">Register here</a></p>
 						</div>
 					</div>
 				</div>
@@ -210,16 +210,15 @@ if (isset($_GET['Message'])) {
 		    </div>
 	    </div>
 
-        <!-- Javascripts -->
-        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-        <script>window.jQuery || document.write('<script src="js/jquery-1.9.1.min.js"><\/script>')</script>
-        <script src="js/bootstrap.min.js"></script>
-        <script src="http://cdn.leafletjs.com/leaflet-0.5.1/leaflet.js"></script>
-        <script src="js/jquery.fitvids.js"></script>
-        <script src="js/jquery.sequence-min.js"></script>
-        <script src="js/jquery.bxslider.js"></script>
-        <script src="js/main-menu.js"></script>
-        <script src="js/template.js"></script>
-
+      <!-- Javascripts -->
+      <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+      <script>window.jQuery || document.write('<script src="js/jquery-1.9.1.min.js"><\/script>')</script>
+      <script src="js/bootstrap.min.js"></script>
+      <script src="http://cdn.leafletjs.com/leaflet-0.5.1/leaflet.js"></script>
+      <script src="js/jquery.fitvids.js"></script>
+      <script src="js/jquery.sequence-min.js"></script>
+      <script src="js/jquery.bxslider.js"></script>
+      <script src="js/main-menu.js"></script>
+      <script src="js/template.js"></script>
     </body>
 </html>

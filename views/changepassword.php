@@ -1,6 +1,6 @@
 <?php
 //error_reporting(0);
-include("config.php");
+include("../includes/config.php");
 session_start();
 if(!isset($_SESSION['ID'])){
   header('location: index.php');
@@ -9,11 +9,8 @@ if(!isset($_SESSION['ID'])){
 if (isset($_GET['Message'])) {
     print '<script type="text/javascript">alert("' . $_GET['Message'] . '");</script>';
 }
-$qry = mysqli_query($dbconnect, "SELECT * FROM users"); while($row = mysqli_fetch_array($qry)):
-$id = $row['ID'];
-endwhile;
 
-include("_header.php");
+include("../includes/_header.php");
 ?>
         <!-- Page Title -->
 		<div class="section section-breadcrumbs">
@@ -31,9 +28,10 @@ include("_header.php");
 				<div class="row">
 					<div class="col-sm-6 col-sm-offset-3">
 						<div class="basic-login">
-              <?php $qry = mysqli_query($dbconnect, "SELECT * FROM users WHERE ID = '$id'"); while($row = mysqli_fetch_array($qry)): ?>
-							<form  role="form" method="POST" action="changepass.php">
-                <input type="hidden" value="<?php echo $id ?>" name="userID">
+              <?php $qry = mysqli_query($dbconnect, "SELECT * FROM users WHERE ID = '".$_SESSION['ID']."'");
+              while($row = mysqli_fetch_array($qry)) { ?>
+							<form  role="form" method="POST" action="../services/changepass.php">
+                <input type="hidden" value="<?php echo 'cc'; ?>" name="userID">
 								<div class="form-group">
 		        				 	<label for="change-password"><i class="glyphicon glyphicon-lock"></i> <b>Enter your Old Password</b></label>
 									<input class="form-control" name="change-password" type="password" placeholder="Old Password">
@@ -51,7 +49,7 @@ include("_header.php");
 									<div class="clearfix"></div>
 								</div>
 							</form>
-            <?php endwhile; ?>
+            <?php } ?>
 						</div>
 					</div>
 				</div>
@@ -108,16 +106,7 @@ include("_header.php");
 		    </div>
 	    </div>
 
-        <!-- Javascripts -->
-        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-        <script>window.jQuery || document.write('<script src="js/jquery-1.9.1.min.js"><\/script>')</script>
-        <script src="js/bootstrap.min.js"></script>
-        <script src="http://cdn.leafletjs.com/leaflet-0.5.1/leaflet.js"></script>
-        <script src="js/jquery.fitvids.js"></script>
-        <script src="js/jquery.sequence-min.js"></script>
-        <script src="js/jquery.bxslider.js"></script>
-        <script src="js/main-menu.js"></script>
-        <script src="js/template.js"></script>
+<?php include("../includes/_javascripts.php"); ?>
 
     </body>
 </html>

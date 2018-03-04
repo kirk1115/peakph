@@ -1,14 +1,14 @@
 <?php
 //error_reporting(0);
-include("config.php");
+include("../includes/config.php");
 session_start();
 if(!isset($_SESSION['ID'])){
-  header('location: index.php');
+  header('location: ../index.php');
 }
 if (isset($_GET['Message'])) {
     print '<script type="text/javascript">alert("' . $_GET['Message'] . '");</script>';
 }
-include("_header.php");
+include("../includes/_header.php");
 ?>
     <!-- Page Title -->
 		<div class="section section-breadcrumbs">
@@ -21,13 +21,13 @@ include("_header.php");
 			</div>
 		</div>
     <input type="hidden" id="userId" value="$_SESSION['ID']"/>
-    <?php $qry = mysqli_query($dbconnect, "SELECT * FROM users"); while($row = mysqli_fetch_array($qry)): ?>
+    <?php $qry = mysqli_query($dbconnect, "SELECT * FROM users WHERE ID=''"); while($row = mysqli_fetch_array($qry)): ?>
         <div class="section">
 	    	<div class="container">
 	    		<div class="row">
 	    			<!-- Profile Picture -->
 	    			<div class="col-sm-3">
-	    					<img src="img/profilepic/none.png" alt="Item Name">
+	    					<img src="../img/profilepic/none.png" alt="Item Name">
 	    			</div>
 	    			<!-- End Profile Picture -->
 	    			<!-- User Details -->
@@ -172,17 +172,7 @@ include("_header.php");
 		    </div>
 	    </div>
 
-        <!-- Javascripts -->
-        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-        <script>window.jQuery || document.write('<script src="js/jquery-1.9.1.min.js"><\/script>')</script>
-        <script src="js/bootstrap.min.js"></script>
-        <script src="http://cdn.leafletjs.com/leaflet-0.5.1/leaflet.js"></script>
-        <script src="js/jquery.fitvids.js"></script>
-        <script src="js/jquery.sequence-min.js"></script>
-        <script src="js/jquery.bxslider.js"></script>
-        <script src="js/main-menu.js"></script>
-        <script src="js/template.js"></script>
-        <script src="js/bio.js"></script>
 
+<?php include("../includes/_javascripts.php"); ?>
     </body>
 </html>

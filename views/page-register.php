@@ -10,23 +10,23 @@
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width">
 
-        <link rel="stylesheet" href="css/bootstrap.min.css">
-        <link rel="stylesheet" href="css/icomoon-social.css">
+        <link rel="stylesheet" href="../css/bootstrap.min.css">
+        <link rel="stylesheet" href="../css/icomoon-social.css">
         <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,600,800' rel='stylesheet' type='text/css'>
 
-        <link rel="stylesheet" href="css/leaflet.css" />
+        <link rel="stylesheet" href="../css/leaflet.css" />
 		<!--[if lte IE 8]>
 		    <link rel="stylesheet" href="css/leaflet.ie.css" />
 		<![endif]-->
-		<link rel="stylesheet" href="css/main.css">
+		<link rel="stylesheet" href="../css/main.css">
 
-        <script src="js/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+        <script src="../js/modernizr-2.6.2-respond-1.1.0.min.js"></script>
     </head>
     <body>
         <!--[if lt IE 7]>
             <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
         <![endif]-->
-        
+
 
         <!-- Navigation & Logo-->
         <div class="mainmenu-wrapper">
@@ -47,7 +47,7 @@
 		        </div>
 		        <nav id="mainmenu" class="mainmenu">
 					<ul>
-						<li class="logo-wrapper"><a href="#"><img src="img/peakph.com.png" alt="Multipurpose Twitter Bootstrap Template"></a></li>
+						<li class="logo-wrapper"><a href="#"><img src="../img/peakph.com.png" alt="Multipurpose Twitter Bootstrap Template"></a></li>
 				</nav>
 			</div>
 		</div>
@@ -63,7 +63,7 @@
 						<!-- Slide Text -->
 						<h3 class="subtitle">With an altitude of 3,146 metres (10,321.5 ft), Mt. Apo is the highest mountain in the country and is located between Davao City, Davao del Sur province and Cotabato province.</h3>
 						<!-- Slide Image -->
-						<img class="slide-img" src="img/mountains/mt apo.jpg" alt="Slide 1" />
+						<img class="slide-img" src="../img/mountains/mt apo.jpg" alt="Slide 1" />
 					</li>
 					<!-- End Slide 1 -->
 					<!-- Slide 2 -->
@@ -76,7 +76,7 @@
 											Difficulty: 4/9<br />
 											Feature: Scenic view of the Sierra Madre range and of Tinipak River</h3>
 						<!-- Slide Image -->
-						<img class="slide-img" src="img/mountains/mt daraitan.jpg" alt="Slide 2" />
+						<img class="slide-img" src="../img/mountains/mt daraitan.jpg" alt="Slide 2" />
 					</li>
 					<!-- End Slide 2 -->
 					<!-- Slide 3 -->
@@ -90,7 +90,7 @@
 											Difficulty: 4/9 (Pinoy Mountaineer)<br />
 											Features: Scenic view of the coastal towns of Batangas. Grass Ridges. 12 Peaks.</h3>
 						<!-- Slide Image -->
-						<img class="slide-img" src="img/mountains/mt batulao.jpg" alt="Slide 3" />
+						<img class="slide-img" src="../img/mountains/mt batulao.jpg" alt="Slide 3" />
 					</li>
 					<!-- End Slide 3 -->
 				</ul>
@@ -115,11 +115,11 @@
 				</div>
 			</div>
 		</div>
-        
+
         <div class="section">
 	    	<div class="container">
 				<div class="row">
-					<form role="form" method="POST" action="db_add_user.php">
+					<form role="form" method="POST" action="../services/db_add_user.php">
 						<div class="col-sm-6">
 							<div class="basic-login">
 								<div class="form-group">
@@ -161,7 +161,7 @@
 		        				 	<label for="register-address"><i class="glyphicon glyphicon-home"></i><b> Address</b></label>
 									<textarea class="form-control" name="register-Address" row="4"></textarea>
 								</div>
-								
+
 							</div>
 						</div>
 						<div class="col-sm-6">
@@ -170,7 +170,7 @@
 		        				 	<label for="register-username"><i class="glyphicon glyphicon-user"></i><b> Username</b></label>
 									<input class="form-control" name="register-Username" type="text" placeholder="Username">
 								</div>
-								
+
 								<div class="form-group">
 		        				 	<label for="register-password"><i class="glyphicon glyphicon-lock"></i><b> Password</b></label>
 									<input class="form-control" name="register-Password" type="password" placeholder="Password">
@@ -215,7 +215,7 @@
 		    			<h3>Our Latest Work</h3>
 		    			<div class="portfolio-item">
 							<div class="portfolio-image">
-								<a href="page-portfolio-item.php"><img src="img/portfolio6.jpg" alt="Project Name"></a>
+								<a href="page-portfolio-item.php"><img src="../img/portfolio6.jpg" alt="Project Name"></a>
 							</div>
 						</div>
 		    		</div>
@@ -230,7 +230,7 @@
 		    				<li><a href="page-faq.php">FAQ</a></li>
 		    			</ul>
 		    		</div>
-		    		
+
 		    		<div class="col-footer col-md-4 col-xs-6">
 		    			<h3>Contacts</h3>
 		    			<p class="contact-us-details">
@@ -257,16 +257,7 @@
 		    </div>
 	    </div>
 
-        <!-- Javascripts -->
-        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-        <script>window.jQuery || document.write('<script src="js/jquery-1.9.1.min.js"><\/script>')</script>
-        <script src="js/bootstrap.min.js"></script>
-        <script src="http://cdn.leafletjs.com/leaflet-0.5.1/leaflet.js"></script>
-        <script src="js/jquery.fitvids.js"></script>
-        <script src="js/jquery.sequence-min.js"></script>
-        <script src="js/jquery.bxslider.js"></script>
-        <script src="js/main-menu.js"></script>
-        <script src="js/template.js"></script>
+<?php include("../includes/_javascripts.php"); ?>
 
     </body>
 </html>

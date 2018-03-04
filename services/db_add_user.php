@@ -1,5 +1,5 @@
 <?php
-include("config.php");
+include("../includes/config.php");
 
 $fname = $_POST['register-Fname'];
 $mi = $_POST['register-MI'];
@@ -17,6 +17,6 @@ $answer = $_POST['register-Answer'];
 $qry = mysqli_query($dbconnect, "INSERT INTO users(Fname, MI, Lname, Bday, Gender, ContactNumber, Email, Address, Username, Password, SecretQuestion, Answer, Status) VALUES('$fname', '$mi', '$lname', '$bday', '$gender', '$contactnumber', '$email', '$address', '$username', '$password', '$secretquestion', '$answer', '1')");
 
 
-header("Location: index.php");
+header("Location: ../index.php");
 
 ?>

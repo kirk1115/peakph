@@ -1,5 +1,5 @@
 <?php
-include("config.php");
+include("../includes/config.php");
 $id = stripslashes($_POST['userID']);
 $oldpassword = stripslashes($_POST['change-password']);
 $newpassword = stripslashes($_POST['change-newpassword']);
@@ -11,16 +11,17 @@ $qry = mysqli_query($dbconnect, "SELECT Password FROM users WHERE ID='$id'");
 while($row = mysqli_fetch_array($qry)):
 $password = $row['Password'];
 endwhile;
+
 if($oldpassword == $password){
 	if($newpassword == $newpassword2){
 		$updatepassword = mysqli_query($dbconnect, "UPDATE users SET Password = '$newpassword' WHERE ID = '$id'");
-		header("Location: bio.php?Message=" . urlencode($message));
+		header("Location: ../views/bio.php?Message=" . urlencode($message));
 	}else{
-		header("Location: changepassword.php?Message=" . urlencode($message2));
+		header("Location: ../views/changepassword.php?Message=" . urlencode($message2));
 	}
 
 }else{
-	header("Location: changepassword.php?Message=" . urlencode($message3));
+	header("Location: ../viewschangepassword.php?Message=" . urlencode($message3));
 }
 
 ?>

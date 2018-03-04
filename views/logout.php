@@ -14,17 +14,17 @@ session_destroy();
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width">
 
-        <link rel="stylesheet" href="css/bootstrap.min.css">
-        <link rel="stylesheet" href="css/icomoon-social.css">
+        <link rel="stylesheet" href="../css/bootstrap.min.css">
+        <link rel="stylesheet" href="../css/icomoon-social.css">
         <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,600,800' rel='stylesheet' type='text/css'>
 
-        <link rel="stylesheet" href="css/leaflet.css" />
+        <link rel="stylesheet" href="../css/leaflet.css" />
 		<!--[if lte IE 8]>
 		    <link rel="stylesheet" href="css/leaflet.ie.css" />
 		<![endif]-->
-		<link rel="stylesheet" href="css/main.css">
+		<link rel="stylesheet" href="../css/main.css">
 
-        <script src="js/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+        <script src="../js/modernizr-2.6.2-respond-1.1.0.min.js"></script>
     </head>
     <body>
         <!--[if lt IE 7]>
@@ -68,7 +68,7 @@ session_destroy();
 		        </div>
 		        <nav id="mainmenu" class="mainmenu">
 					<ul>
-						<li class="logo-wrapper"><a href="#"><img src="img/peakph.com.png" alt="Multipurpose Twitter Bootstrap Template"></a></li>
+						<li class="logo-wrapper"><a href="#"><img src="../img/peakph.com.png" alt="Multipurpose Twitter Bootstrap Template"></a></li>
 						<!--<li class="active">
 							<a href="index.php">Home</a>
 						</li>
@@ -106,7 +106,7 @@ session_destroy();
 					<div class="col-sm-12">
 						<div class="error-page-wrapper">
 							<p>You have Succesfully Logged Out!</p>
-							<p>Come back and post more here <a href="index.php">Login</a>!</p>
+							<p>Come back and post more here <a href="../index.php">Login</a>!</p>
 						</div>
 					</div>
 				</div>
@@ -121,7 +121,7 @@ session_destroy();
 		    			<h3>Our Latest Work</h3>
 		    			<div class="portfolio-item">
 							<div class="portfolio-image">
-								<a href="page-portfolio-item.php"><img src="img/portfolio6.jpg" alt="Project Name"></a>
+								<a href="page-portfolio-item.php"><img src="../img/portfolio6.jpg" alt="Project Name"></a>
 							</div>
 						</div>
 		    		</div>
@@ -163,16 +163,7 @@ session_destroy();
 		    </div>
 	    </div>
 
-        <!-- Javascripts -->
-        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-        <script>window.jQuery || document.write('<script src="js/jquery-1.9.1.min.js"><\/script>')</script>
-        <script src="js/bootstrap.min.js"></script>
-        <script src="http://cdn.leafletjs.com/leaflet-0.5.1/leaflet.js"></script>
-        <script src="js/jquery.fitvids.js"></script>
-        <script src="js/jquery.sequence-min.js"></script>
-        <script src="js/jquery.bxslider.js"></script>
-        <script src="js/main-menu.js"></script>
-        <script src="js/template.js"></script>
+<?php include("../includes/_javascripts.php"); ?>
 
     </body>
 </html>
