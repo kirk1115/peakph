@@ -76,7 +76,7 @@
           							<a href="page-blog-posts.php">Forums</a>
           						</li>
           						<li>
-          							<a href="features.php">Posts</a>
+          							<a href="posts.php">Posts</a>
           						</li>
           						<li>
           							<a href="features.php">Messages</a>
