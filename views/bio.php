@@ -21,30 +21,31 @@ include("../includes/_header.php");
 			</div>
 		</div>
     <input type="hidden" id="userId" value="$_SESSION['ID']"/>
-    <?php $qry = mysqli_query($dbconnect, "SELECT * FROM users WHERE ID=''"); while($row = mysqli_fetch_array($qry)): ?>
+    <?php $qry = mysqli_query($dbconnect, "SELECT * FROM users WHERE ID=" . $_SESSION['ID'] . ""); while($row = mysqli_fetch_array($qry)): ?>
         <div class="section">
 	    	<div class="container">
 	    		<div class="row">
 	    			<!-- Profile Picture -->
-	    			<div class="col-sm-3">
-	    					<img src="../img/profilepic/none.png" alt="Item Name">
+	    			<div class="col-sm-3 divbutton">
+	    					<img src="<?php echo $row['ProfilePath']; ?>" alt="Profile Picture">
+                  <a href="changeprofilepic.php" type="file" class="btn pull-right"><i class="glyphicon glyphicon-edit"></i></a>
 	    			</div>
 	    			<!-- End Profile Picture -->
 	    			<!-- User Details -->
 	    			<div class="col-sm-8">
 	    				<h3><?php echo $row['Fname'] . " " . $row['MI'] . " " . $row['Lname']; ?></h3>
+              <h5>Details</h5>
+                <h5>
+                  <label>Bdate:</label><?php echo $row['Bday']; ?><br />
+                  <label>Gender:</label><?php echo $row['Gender']; ?><br />
+                  <label>Contact Number:</label><?php echo $row['ContactNumber']; ?><br />
+                  <label>Email:</label><?php echo $row['Email']; ?><br />
+                  <label>Address:</label><?php echo $row['Address']; ?><br />
+                </h5>
 						</div>
             <div class="col-sm-1">
                 <a href="changepassword.php" class="btn pull-right"><i class="glyphicon glyphicon-cog"></i></a>
             </div>
-						<h5><label>Details</label></h5>
-              <h5>
-                <label>Bdate:</label><?php echo $row['Bday']; ?><br />
-                <label>Gender:</label><?php echo $row['Gender']; ?><br />
-                <label>Contact Number:</label><?php echo $row['ContactNumber']; ?><br />
-                <label>Email:</label><?php echo $row['Email']; ?><br />
-                <label>Address:</label><?php echo $row['Address']; ?><br />
-              </h5>
 	    			<!-- End User Details -->
 
 	    			<!-- Full Description & Specification -->
@@ -130,7 +131,7 @@ include("../includes/_header.php");
 		    			<h3>Our Latest Work</h3>
 		    			<div class="portfolio-item">
 							<div class="portfolio-image">
-								<a href="page-portfolio-item.html"><img src="img/portfolio6.jpg" alt="Project Name"></a>
+								<a href="page-portfolio-item.html"><img src="../img/portfolio6.jpg" alt="Project Name"></a>
 							</div>
 						</div>
 		    		</div>

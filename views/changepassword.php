@@ -28,10 +28,9 @@ include("../includes/_header.php");
 				<div class="row">
 					<div class="col-sm-6 col-sm-offset-3">
 						<div class="basic-login">
-              <?php $qry = mysqli_query($dbconnect, "SELECT * FROM users WHERE ID = '".$_SESSION['ID']."'");
+              <?php $qry = mysqli_query($dbconnect, "SELECT * FROM users WHERE ID=" . $_SESSION['ID'] . "");
               while($row = mysqli_fetch_array($qry)) { ?>
 							<form  role="form" method="POST" action="../services/changepass.php">
-                <input type="hidden" value="<?php echo 'cc'; ?>" name="userID">
 								<div class="form-group">
 		        				 	<label for="change-password"><i class="glyphicon glyphicon-lock"></i> <b>Enter your Old Password</b></label>
 									<input class="form-control" name="change-password" type="password" placeholder="Old Password">
@@ -64,7 +63,7 @@ include("../includes/_header.php");
 		    			<h3>Our Latest Work</h3>
 		    			<div class="portfolio-item">
 							<div class="portfolio-image">
-								<a href="page-portfolio-item.html"><img src="img/portfolio6.jpg" alt="Project Name"></a>
+								<a href="page-portfolio-item.html"><img src="../img/portfolio6.jpg" alt="Project Name"></a>
 							</div>
 						</div>
 		    		</div>
