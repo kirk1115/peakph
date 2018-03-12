@@ -68,7 +68,7 @@ session_destroy();
 		        </div>
 		        <nav id="mainmenu" class="mainmenu">
 					<ul>
-						<li class="logo-wrapper"><a href="#"><img src="../img/peakph.com.png" alt="Multipurpose Twitter Bootstrap Template"></a></li>
+						<li class="logo-wrapper"><a href="#"><img src="../img/PeakPH.com.png" alt="Multipurpose Twitter Bootstrap Template"></a></li>
 						<!--<li class="active">
 							<a href="index.php">Home</a>
 						</li>
