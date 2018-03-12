@@ -65,7 +65,7 @@
               <div class="col-md-9 no-padding">
   	             <nav id="mainmenu" class="mainmenu">
           					<ul>
-          						<li class="logo-wrapper"><a href="home.php"><img src="../img/peakph.com.png" alt="Multipurpose Twitter Bootstrap Template"></a></li>
+          						<li class="logo-wrapper"><a href="home.php"><img src="../img/PeakPH.com.png" alt="Multipurpose Twitter Bootstrap Template"></a></li>
           						<li class="active">
           							<a href="home.php">Home</a>
           						</li>
