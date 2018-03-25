@@ -37,7 +37,13 @@ include("../includes/_header.php");
         <div class="col-md-12 col-sm-6">
           <div class="blog-post">
             <div class="card-image" style="display: block;">
-              <img src="<?php echo 'data:image;base64,'.$row[6]; ?>"/>
+              <img src="<?php
+                    if ($row[6] != null) {
+                      echo 'data:image;base64,'.$row[6];
+                    } else {
+                      echo '../img/image-not-found.jpg';
+                    }
+                  ?>"/>
             </div>
             <!-- Post Title -->
             <div class="card-subtitle">
@@ -146,11 +152,17 @@ include("../includes/_header.php");
               </div>
             </div>
 
-            <div class="post-more">
-              <input type="button" id="btnSetAsPrivate" class="btn btn-small file-input-parent" value="Set as Private"/>
-              <input type="button" id="btnRemovePost" class="btn btn-small file-input-parent" value="Remove Post"/>
-              <a href="../views/empty_post.php?postId=<?php echo $_GET['postId']; ?>" class="btn btn-small file-input-parent">Edit Post</a>
-            </div>
+            <?php if(!isset($_GET['view'])) { ?>
+              <div class="post-more">
+                <input type="button" id="btnSetAsPrivate" class="btn btn-small file-input-parent" value="Set as Private"/>
+                <input type="button" id="btnRemovePost" class="btn btn-small file-input-parent" value="Remove Post"/>
+                <a href="../views/empty_post.php?postId=<?php echo $_GET['postId']; ?>" class="btn btn-small file-input-parent">Edit Post</a>
+              </div>
+            <?php } else { ?>
+              <div class="post-more">
+                <a href="../views/newsfeed.php" class="btn btn-small">Back</a>
+              </div>
+            <?php } ?>
           </div>
         </div>
         <!-- End Post -->

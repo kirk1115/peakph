@@ -37,7 +37,13 @@ include("../includes/_header.php");
 				<div class="col-md-12 col-sm-6">
 					<div class="blog-post">
             <div class="card-image" style="display: block;">
-              <img src="<?php echo 'data:image;base64,'.$row[6]; ?>" id="imgUpload"/>
+              <img src="<?php
+                    if ($row[6] != null) {
+                      echo 'data:image;base64,'.$row[6];
+                    } else {
+                      echo '../img/image-not-found.jpg';
+                    }
+                  ?>" id="imgUpload"/>
             </div>
 						<!-- Post Title -->
 						<div class="card-subtitle">

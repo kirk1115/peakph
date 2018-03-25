@@ -2,8 +2,12 @@
 include("../includes/config.php");
 include("../services/upload.php");
 
-$tmpImage = '../img/temp.jpg';
-$compressedImage = compressImage($_POST['imgUpload'], $tmpImage, 90);
+$compressedImage = null;
+
+if (isset($_POST['imgUpload'])) {
+  $tmpImage = '../img/temp.jpg';
+  $compressedImage = compressImage($_POST['imgUpload'], $tmpImage, 90);
+}
 
 $userId = $_POST['userId'];
 $title = $_POST['title'];

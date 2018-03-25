@@ -2857,3 +2857,7 @@ span.color-red {
   max-height: 100px;
   max-width: 100px;
 }
+
+.post-image {
+  background-image:url('../img/image-not-found.jpg');
+}

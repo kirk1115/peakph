@@ -17,6 +17,7 @@ $(document).ready( function() {
       $('#location').val('');
       $('#details').val('');
       $('#totalExpenses').val('');
+      $('#imgUpload').attr('src', '');
       $('.card-image').css('display', 'none');
       console.log($('.carousel-inner').children().length);
       clearGallery();
