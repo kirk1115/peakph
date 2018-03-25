@@ -28,7 +28,13 @@ $searchuser = $_POST['searchuser'];
 	    		<div class="row">
 	    			<!-- Profile Picture -->
 	    			<div class="col-sm-2 divbutton profilepiccenter2">
-	    					<img id="postImage" class="post-image" alt="Post Title" src="<?php echo 'data:image;base64,'.$row['ProfilePath']; ?>"></a>
+	    					<img id="postImage" class="post-image" alt="Post Title" src="<?php
+                            if ($row['ProfilePath'] != null) {
+                              echo 'data:image;base64,'.$row['ProfilePath'];
+                            } else {
+                              echo '../img/profilepic/none.png';
+                            }
+                          ?>"></a>
 	    			</div>
 	    			<!-- End Profile Picture -->
 	    			<!-- User Details -->

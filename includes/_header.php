@@ -50,10 +50,7 @@
 									<a class="#" data-toggle="dropdown" href="#"><i class="glyphicon glyphicon-user"></i>Profile</a>
 									<ul class="dropdown-menu" role="menu">
 										<li role="menuitem"><a href="bio.php">BIO</a></li>
-										<li role="menuitem"><a href="page-team.php">Followers</a></li>
-										<li role="menuitem"><a href="page-team.php">Following</a></li>
 										<li role="menuitem"><a href="page-blog-posts.php">Saved Post</a></li>
-										<li role="menuitem"><a href="page-register.php">Change Password</a></li>
 									</ul>
 								</div>
 							</li>

@@ -27,7 +27,13 @@ include("../includes/_header.php");
 	    		<div class="row">
 	    			<!-- Profile Picture -->
 	    			<div class="col-sm-4 divbutton profilepiccenter">
-	    					<img id="postImage" class="post-image" alt="Post Title" src="<?php echo 'data:image;base64,'.$row['ProfilePath']; ?>"></a>
+	    					<img id="postImage" class="post-image" src="<?php
+                            if ($row['ProfilePath'] != null) {
+                              echo 'data:image;base64,'.$row['ProfilePath'];
+                            } else {
+                              echo '../img/profilepic/none.png';
+                            }
+                          ?>"></a>
                 <a href="#change_pic" role="button" class="btn btn-default pull-right" data-toggle="modal"><i class="glyphicon glyphicon-edit"></i></a>
 	    			</div>
 	    			<!-- End Profile Picture -->
@@ -53,66 +59,61 @@ include("../includes/_header.php");
 	    				<div class="tabbable">
 	    					<!-- Tabs -->
 							<ul class="nav nav-tabs product-details-nav">
-								<li class="active"><a href="#tab1" data -toggle="tab">Followers</a></li>
+								<li class="active"><a href="#tab1" data-toggle="tab">Followers</a></li>
 								<li><a href="#tab2" data-toggle="tab">Following</a></li>
 							</ul>
 							<!-- Tab Content (Full Description) -->
 							<div class="tab-content product-detail-info">
 								<div class="tab-pane active" id="tab1">
-									<h4>Product Description</h4>
-									<p>
-										Donec hendrerit massa metus, a ultrices elit iaculis eu. Pellentesque ullamcorper augue lacus. Phasellus et est quis diam iaculis fringilla id nec sapien. Sed tempor ornare felis, non vulputate dolor. Etiam ornare diam vitae ligula malesuada tempor. Vestibulum nec odio vel libero ullamcorper euismod et in sapien. Suspendisse potenti.
-									</p>
-									<h4>Product Highlights</h4>
-									<ul>
-										<li>Nullam dictum augue nec iaculis rhoncus. Aenean lobortis fringilla orci, vitae varius purus eleifend vitae.</li>
-										<li>Nunc ornare, dolor a ultrices ultricies, magna dolor convallis enim, sed volutpat quam sem sed tellus.</li>
-										<li>Aliquam malesuada cursus urna a rutrum. Ut ultricies facilisis suscipit.</li>
-										<li>Duis a magna iaculis, aliquam metus in, luctus eros.</li>
-										<li>Aenean nisi nibh, imperdiet sit amet eleifend et, gravida vitae sem.</li>
-										<li>Donec quis nisi congue, ultricies massa ut, bibendum velit.</li>
-									</ul>
-									<h4>Usage Information</h4>
-									<p>
-										Donec hendrerit massa metus, a ultrices elit iaculis eu. Pellentesque ullamcorper augue lacus. Phasellus et est quis diam iaculis fringilla id nec sapien. Sed tempor ornare felis, non vulputate dolor. Etiam ornare diam vitae ligula malesuada tempor. Vestibulum nec odio vel libero ullamcorper euismod et in sapien. Suspendisse potenti.
-									</p>
+                  <input type="hidden" id="userId" value="$_SESSION['ID']"/>
+                  <?php $qry = mysqli_query($dbconnect, "SELECT * FROM follow F LEFT JOIN users U ON U.ID = F.UserID WHERE F.FollowingID=$_SESSION[ID]"); while($row = mysqli_fetch_array($qry)): ?>
+                      <div class="section">
+              	    	<div class="container">
+              	    		<div class="row">
+              	    			<!-- Profile Picture -->
+              	    			<div class="col-sm-2 divbutton profilepiccenter2">
+              	    					<img id="postImage" class="post-image" alt="Post Title" src="<?php echo 'data:image;base64,'.$row['ProfilePath']; ?>"></a>
+              	    			</div>
+              	    			<!-- End Profile Picture -->
+              	    			<!-- User Details -->
+              	    			<div class="col-sm-10">
+              	    				<a href="searchbio.php?id=<?php echo $row['ID']; ?>"><h3><?php echo $row['Fname'] . " " . $row['MI'] . " " . $row['Lname']; ?></h3></a>
+                            <h5>Details</h5>
+                              <h5>
+                                <label>Gender:</label><?php echo $row['Gender']; ?><br />
+                                <label>Email:</label><?php echo $row['Email']; ?><br />
+                              </h5>
+              						</div>
+              	    		</div>
+              			</div>
+              		</div>
+                  <?php endwhile; ?>
 								</div>
 								<!-- Tab Content (Specification) -->
 								<div class="tab-pane" id="tab2">
-									<table>
-										<tr>
-											<td>Total sensor Pixels (megapixels)</td>
-											<td>Approx. 16.7</td>
-										</tr>
-										<tr>
-											<td>Effective Pixels (megapixels)</td>
-											<td>Approx. 16.1</td>
-										</tr>
-										<tr>
-											<td>Automatic White Balance</td>
-											<td>YES</td>
-										</tr>
-										<tr>
-											<td>White balance: preset selection</td>
-											<td>Daylight, Shade, Cloudy, Incandescent, Fluorescent, Flash</td>
-										</tr>
-										<tr>
-											<td>White balance: custom setting</td>
-											<td>YES</td>
-										</tr>
-										<tr>
-											<td>White balance: types of color temperature</td>
-											<td>YES (G7 to M7,15-step) (A7 to B7,15-step)</td>
-										</tr>
-										<tr>
-											<td>White balance bracketing</td>
-											<td>NO</td>
-										</tr>
-										<tr>
-											<td>ISO Sensitivity Setting</td>
-											<td>ISO100 - 25600 equivalent</td>
-										</tr>
-									</table>
+                  <input type="hidden" id="userId" value="$_SESSION['ID']"/>
+                  <?php $qry = mysqli_query($dbconnect, "SELECT * FROM follow F LEFT JOIN users U ON U.ID = F.FollowingID WHERE F.UserID=$_SESSION[ID]"); while($row = mysqli_fetch_array($qry)): ?>
+                      <div class="section">
+              	    	<div class="container">
+              	    		<div class="row">
+              	    			<!-- Profile Picture -->
+              	    			<div class="col-sm-2 divbutton profilepiccenter2">
+              	    					<img id="postImage" class="post-image" alt="Post Title" src="<?php echo 'data:image;base64,'.$row['ProfilePath']; ?>"></a>
+              	    			</div>
+              	    			<!-- End Profile Picture -->
+              	    			<!-- User Details -->
+              	    			<div class="col-sm-10">
+              	    				<a href="searchbio.php?id=<?php echo $row['ID']; ?>"><h3><?php echo $row['Fname'] . " " . $row['MI'] . " " . $row['Lname']; ?></h3></a>
+                            <h5>Details</h5>
+                              <h5>
+                                <label>Gender:</label><?php echo $row['Gender']; ?><br />
+                                <label>Email:</label><?php echo $row['Email']; ?><br />
+                              </h5>
+              						</div>
+              	    		</div>
+              			</div>
+              		</div>
+                  <?php endwhile; ?>
 								</div>
 							</div>
 						</div>
