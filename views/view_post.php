@@ -70,19 +70,21 @@ include("../includes/_header.php");
             </div>
             <!-- End Post Title & Summary -->
 
+            <?php
+              $hasGallery = (mysqli_num_rows(mysqli_query($dbconnect, "SELECT * FROM GALLERY WHERE PostId = '$_GET[postId]'")) > 0);
+            ?>
+
             <!-- Photo Gallery -->
-            <div class="card-photos" style="display: block;">
+            <div class="card-photos" style="display: <?php if ($hasGallery) { echo 'block'; } else { echo 'none'; }?>;">
               <h3>Photo Gallery</h3>
             </div>
-            <div class="card-photos post-summary" style="display: block;">
+            <div class="card-photos post-summary" style="display: <?php if ($hasGallery) { echo 'block'; } else { echo 'none'; }?>;">
               <div class="row">
                 <div class="col-md-12">
                   <div id="myCarousel" class="carousel slide multi-item-carousel" data-ride="carousel">
                     <!-- Indicators -->
                     <ol class="carousel-indicators">
                       <?php
-                        include ('../includes/config.php');
-
                         $result = mysqli_query($dbconnect, "SELECT * FROM GALLERY WHERE PostId = '$_GET[postId]'");
                         $i = 0;
                         while ($row = mysqli_fetch_assoc($result)) {

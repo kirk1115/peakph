@@ -1,9 +1,12 @@
 <?php
 include("../includes/config.php");
+include("../services/upload.php");
 
 $imgContent = null;
 if ($_POST['coverPhoto'] != null) {
-  $imgContent = base64_encode(file_get_contents($_POST['coverPhoto']));
+  $tmpImage = '../img/temp.jpg';
+  $compressedImage = compressImage($_POST['coverPhoto'], $tmpImage, 90);
+  $imgContent = base64_encode(file_get_contents($compressedImage));
 }
 try {
   $result = mysqli_query($dbconnect,
