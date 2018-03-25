@@ -1,11 +1,14 @@
 $(document).ready( function() {
-    var input = $(this),
-      label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
-    input.trigger('fileselect', [label]);
-
     $('#btnNewPost').click(function() {
-      $('#btnNewPost').css('display', 'none');
-      $('#newPost').css('display', 'block');
+      if ($('#btnNewPost .h4').text() !== 'Cancel') {
+        $('#btnNewPost .h4').text('Cancel');
+        $('#btnNewPost .glyphicon').removeClass('glyphicon-plus-sign');
+        $('#btnNewPost .glyphicon').addClass('glyphicon-remove-sign');
+      } else {
+        $('#btnNewPost .h4').text('New Post');
+        $('#btnNewPost .glyphicon').removeClass('glyphicon-remove-sign');
+        $('#btnNewPost .glyphicon').addClass('glyphicon-plus-sign');
+      }
     });
 
     function clearNewPost() {
@@ -14,13 +17,39 @@ $(document).ready( function() {
       $('#location').val('');
       $('#details').val('');
       $('#totalExpenses').val('');
+      $('.card-image').css('display', 'none');
+      console.log($('.carousel-inner').children().length);
+      clearGallery();
+    }
+
+    function clearGallery() {
+      console.log('clears');
+      $('.card-photos').css('display', 'none');
+      $('.carousel-inner').empty();
+    }
+
+    function saveGallery(postId, imageSrc) {
+      $.ajax({
+        url: "../services/register_gallery.php",
+        type: "post",
+        data: {
+          postId: postId,
+          image: imageSrc
+        },
+        success: function(result){
+          $('.overlay').css('display', 'none');
+          console.log(result);
+          clearGallery();
+          location.reload();
+        }
+      });
     }
 
     $('#btnPost').click(function() {
       $('#btnNewPost').css('display', 'initial');
       $('#newPost').css('display', 'none');
 
-        console.log($('#coverPhotoInput'));
+      $('.overlay').css('display', 'block');
       $.ajax({
         url: "../services/register_post.php",
         type: "post",
@@ -34,75 +63,20 @@ $(document).ready( function() {
         },
         success: function(result){
           console.log(result);
+
+          var gallerySrc;
+          $('.carousel-inner').children().each(function() {
+            gallerySrc = $(this).children().first().children().children().attr('src');
+            saveGallery(result, gallerySrc);
+          });
+          if ($('.carousel-inner').children().length === 0) {
+            location.reload();
+          }
           clearNewPost();
         }
       });
     });
 
-    $("#location").placepicker();
-
-    $('.file-input :file').on('fileselect', function(event, label) {
-      var input = $(this).parents('.post-more').find(':text'),
-        log = label;
-
-      if( input.length ) {
-        input.val(log);
-      } else {
-        if( log ) alert(log);
-      }
-
-    });
-    function readURL(input) {
-      if (input.files && input.files[0]) {
-        var reader = new FileReader();
-
-        reader.onload = function (e) {
-          $('#imgUpload').attr('src', e.target.result);
-          $('.card-image').css('display', 'block');
-          // console.log('cc');
-          // console.log(e.target);
-          // console.log(URL.createObjectURL(event.target.result));
-        }
-
-        reader.readAsDataURL(input.files[0]);
-      }
-    }
-
-    $("#coverPhotoInput").change(function(){
-      readURL(this);
-    });
-
-    $("#photosInput").change(function(){
-      var total_file=document.getElementById("photosInput").files.length;
-      console.log(total_file);
-      if (total_file > 0) {
-        $('.card-photos').css('display', 'block');
-      }
-      for(var i=0;i<total_file;i++)
-      {
-        $('.carousel-inner').append(
-          "<div class=\"item " + ((i === 0) ? "active" : "") + "\">" +
-            "<div class='col-xs-4'><a href=\"#\"><img class='img-responsive' src='"+URL.createObjectURL(event.target.files[i])+"'></a></div>" +
-          "</div>");
-      }
-      var i = 0;
-      $('.multi-item-carousel .item').each(function(){
-        console.log('wow ' + i);
-        var next = $(this).next();
-        console.log(next);
-        if (!next.length) {
-          next = $(this).siblings(':first');
-        }
-        next.children(':first-child').clone().appendTo($(this));
-
-        if (next.next().length>0) {
-          next.next().children(':first-child').clone().appendTo($(this));
-        } else {
-        	$(this).siblings(':first').children(':first-child').clone().appendTo($(this));
-        }
-        i++;
-      });
-    });
-
+    // $("#location").placepicker();
     $('.amount').mask("000,000,000.00", {reverse: true});
 });
