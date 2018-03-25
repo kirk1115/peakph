@@ -9,6 +9,7 @@ if (isset($_GET['Message'])) {
     print '<script type="text/javascript">alert("' . $_GET['Message'] . '");</script>';
 }
 include("../includes/_header.php");
+$searchID = $_GET['id'];
 ?>
     <!-- Page Title -->
 		<div class="section section-breadcrumbs">
@@ -21,14 +22,13 @@ include("../includes/_header.php");
 			</div>
 		</div>
     <input type="hidden" id="userId" value="$_SESSION['ID']"/>
-    <?php $qry = mysqli_query($dbconnect, "SELECT * FROM users WHERE ID=" . $_SESSION['ID'] . ""); while($row = mysqli_fetch_array($qry)): ?>
+    <?php $qry = mysqli_query($dbconnect, "SELECT * FROM users WHERE ID=$searchID;"); while($row = mysqli_fetch_array($qry)): ?>
         <div class="section">
 	    	<div class="container">
 	    		<div class="row">
 	    			<!-- Profile Picture -->
 	    			<div class="col-sm-4 divbutton profilepiccenter">
 	    					<img id="postImage" class="post-image" alt="Post Title" src="<?php echo 'data:image;base64,'.$row['ProfilePath']; ?>"></a>
-                <a href="#change_pic" role="button" class="btn btn-default pull-right" data-toggle="modal"><i class="glyphicon glyphicon-edit"></i></a>
 	    			</div>
 	    			<!-- End Profile Picture -->
 	    			<!-- User Details -->
@@ -43,8 +43,15 @@ include("../includes/_header.php");
                   <label>Address:</label><?php echo $row['Address']; ?><br />
                 </h5>
 						</div>
+            <?php endwhile; ?>
+            <?php $qry = mysqli_query($dbconnect, "SELECT * FROM follow WHERE UserID=" . $_SESSION['ID'] . " AND FollowingID = $searchID;"); ?>
             <div class="col-sm-1">
-                <a href="changepassword.php" class="btn pull-right"><i class="glyphicon glyphicon-cog"></i></a>
+            <?php if (mysqli_num_rows($qry) > 0) {
+              echo "<a href=\"../services/unfollow.php?followingid=$searchID\" class=\"btn pull-right\"><i class=\"glyphicon glyphicon-heart-empty\"></i> Unfollow</a>";
+            }
+            else {
+               echo "<a href=\"../services/follow.php?followingid=$searchID\" class=\"btn pull-right\"><i class=\"glyphicon glyphicon-heart\"></i> Follow</a>";
+             } ?>
             </div>
 	    			<!-- End User Details -->
 
@@ -122,7 +129,7 @@ include("../includes/_header.php");
 			</div>
 		</div>
     <?php include('../services/modal_changeprofilepic.php'); ?>
-    <?php endwhile; ?>
+
 
 	    <!-- Footer -->
 	    <div class="footer">

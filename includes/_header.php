@@ -86,12 +86,14 @@
                 </div>
                 <div class="col-md-3 no-padding">
                     <div class="row no-margin">
+                      <form method="post" action="../views/search_user.php">
                       <div class="col-md-9 no-padding">
-                        <input class="form-control input-md" id="appendedInputButtons" type="text">
+                        <input class="form-control input-md" name="searchuser" type="text">
                       </div>
                       <div class="col-md-3 no-padding">
-                        <button class="btn btn-md" type="button"><i class="glyphicon glyphicon-search"></i></button>
+                        <button class="btn btn-md" type="submit"><i class="glyphicon glyphicon-search"></i></button>
                       </div>
+                    </form>
                     </div>
                 </div>
               </div>

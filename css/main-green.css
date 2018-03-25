@@ -2840,3 +2840,20 @@ span.color-red {
     from { transform: scale(1) rotate(0deg);}
     to { transform: scale(1) rotate(360deg);}
 }
+
+.profilepiccenter {
+    display: block;
+    text-align: center;
+}
+.profilepiccenter img {
+  max-height: 300px;
+  max-width: 300px;
+}
+.profilepiccenter2 {
+    display: block;
+    text-align: center;
+}
+.profilepiccenter2 img {
+  max-height: 100px;
+  max-width: 100px;
+}
