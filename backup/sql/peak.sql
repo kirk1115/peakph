@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.7
--- https://www.phpmyadmin.net/
+-- version 4.5.1
+-- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 25, 2018 at 02:47 PM
--- Server version: 10.1.30-MariaDB
--- PHP Version: 7.2.2
+-- Generation Time: Mar 25, 2018 at 02:55 PM
+-- Server version: 10.1.13-MariaDB
+-- PHP Version: 7.0.8
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -21,6 +21,18 @@ SET time_zone = "+00:00";
 --
 -- Database: `peak`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `follow`
+--
+
+CREATE TABLE `follow` (
+  `ID` int(11) NOT NULL,
+  `UserID` int(11) NOT NULL,
+  `FollowingID` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -83,13 +95,19 @@ CREATE TABLE `users` (
   `Password` varchar(255) NOT NULL,
   `SecretQuestion` varchar(255) NOT NULL,
   `Answer` varchar(255) NOT NULL,
-  `ProfilePath` varchar(255) NOT NULL,
+  `ProfilePath` longblob NOT NULL,
   `Status` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `follow`
+--
+ALTER TABLE `follow`
+  ADD PRIMARY KEY (`ID`);
 
 --
 -- Indexes for table `gallery`
@@ -119,6 +137,11 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for dumped tables
 --
 
+--
+-- AUTO_INCREMENT for table `follow`
+--
+ALTER TABLE `follow`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `gallery`
 --
