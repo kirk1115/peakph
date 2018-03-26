@@ -67,7 +67,7 @@
           							<a href="home.php">Home</a>
           						</li>
           						<li>
-          							<a href="page-blog-posts.php">Newsfeed</a>
+          							<a href="newsfeed.php">Newsfeed</a>
           						</li>
           						<li>
           							<a href="page-blog-posts.php">Forums</a>
