@@ -78,6 +78,29 @@ $(document).ready( function() {
       });
     });
 
+    $('.post-upvote').click(function() {
+      $('.overlay').css('display', 'block');
+      $.ajax({
+        url: "../services/toggle_upvote.php",
+        type: "post",
+        data: {
+          postId: $(this).attr('pid'),
+          upvote: $(this).hasClass('post-upvote-yes') ? 'N' : 'Y'
+        },
+        success: function(result){
+          console.log(result);
+          location.reload();
+        }
+      });
+      // if ($(this).attr('v') === 'Y') {
+      //   $(this).attr('v', 'N');
+      //   $(this).css('color', '#585a5a');
+      // } else {
+      //   $(this).attr('v', 'Y');
+      //   $(this).css('color', '#f9f106');
+      // }
+    });
+
     // $("#location").placepicker();
     $('.amount').mask("000,000,000.00", {reverse: true});
 });

@@ -2861,3 +2861,33 @@ span.color-red {
 .post-image {
   background-image:url('../img/image-not-found.jpg');
 }
+
+.blog-post-comments {
+  margin-top: 0px;
+}
+
+.blog-post-comments .card-subtitle {
+  margin: 10px 0px 20px 0px;
+}
+
+.blog-post-comment {
+  margin: 10px 0px 10px 0px;
+  padding-bottom: 10px;
+  border-bottom: dashed 0.5px #535b60;
+}
+
+.post-upvote {
+  position: absolute;
+  right: 30px;
+  font-size: 70px;
+  top: 20px;
+  cursor: pointer;
+}
+
+.post-upvote-no {
+  color: #585a5a;
+}
+
+.post-upvote-yes {
+  color: #f9f106;
+}

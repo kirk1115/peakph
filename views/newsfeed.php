@@ -37,12 +37,31 @@ include("../includes/_header.php");
                 <input type="hidden" name="view" value="Y"/>
                 <div class="blog-post">
                   <div class="post-info" style="margin: 10px 0px 10px 0px;">
+                    <div class="post-comments-count">
+                      <h4 style="color: #fff;">Ratings:
+                        <?php
+                          echo mysqli_num_rows(mysqli_query($dbconnect, "SELECT 1 FROM upvotes WHERE PostId = $row[ID]"));
+                        ?>
+                      </h4>
+                    </div>
                     <div class="post-date">
                       <div class="date"><?php echo date_format(new DateTime($row['PostDate']), 'F d, Y h:i:s A'); ?></div>
                     </div>
                     <div class="post-comments-count">
-                      <a href="page-blog-post-right-sidebar.php" title="Show Comments"><i class="glyphicon glyphicon-comment icon-white"></i>16</a>
+                      <i class="glyphicon glyphicon-comment icon-white"></i>
+                      <?php
+                        echo mysqli_num_rows(mysqli_query($dbconnect, "SELECT 1 FROM comments WHERE PostId=$row[ID]"));
+                      ?>
                     </div>
+                  </div>
+                  <div class="post-upvote <?php
+                        if (mysqli_num_rows(mysqli_query($dbconnect, "SELECT 1 FROM upvotes WHERE PostId = $row[ID] AND UserId = $userId")) > 0) {
+                          echo "post-upvote-yes";
+                        } else {
+                          echo "post-upvote-no";
+                        }
+                      ?>" pid="<?php echo $row['ID']; ?>" v="N">
+                    <span class="glyphicon glyphicon-star"></span>
                   </div>
                   <div class="text-center" style="margin: 10px 0px 10px 0px;">
                     <img id="postImage" class="post-image"

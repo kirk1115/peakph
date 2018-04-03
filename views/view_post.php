@@ -170,6 +170,11 @@ include("../includes/_header.php");
           }
         ?>
       </div>
+      <div class="col-md-9 row">
+        <div class="col-md-12 col-sm-6">
+          <?php include('../views/comments.php'); ?>
+        </div>
+      </div>
     </div>
   </div>
   <!-- End Posts List -->
