@@ -16,7 +16,7 @@ include("../includes/_header.php");
       <div class="container">
         <div class="row">
           <div class="col-md-12">
-            <h1>Blog Posts</h1>
+            <h1>News Feed</h1>
           </div>
         </div>
       </div>
@@ -27,102 +27,14 @@ include("../includes/_header.php");
         <div class="container">
         <div class="col-md-9 row">
           <div class="col-md-12 col-sm-6">
-            <button class="btn btn-small" style="padding: 5px 8px; display: block;" id="btnNewPost"
-                data-toggle="collapse" data-target="#newPost">
-              <span style="padding: 8px 0px;">
-                <span class="h4" style="padding: 4px 8px 4px 0px; border-right: solid 1px;">New Post</span>
-                <span class="glyphicon glyphicon-plus-sign" style="padding: 0px 0px 0px 5px;"></span>
-              </span>
-            </button>
-          </div>
-          <!-- Post -->
-          <div class="col-md-12 col-sm-6 collapse" id="newPost">
-            <div class="blog-post">
-              <!-- Post Image -->
-              <!-- <a href="page-blog-post-right-sidebar.php"><img src="img/blog1.jpg" class="post-image" alt="Post Title"></a> -->
-              <!-- End Post Image -->
-              <!-- Post Title -->
-              <div class="card-header">
-                <h3>New Post</h3>
-              </div>
-
-              <div class="card-image">
-                <img id="imgUpload"/>
-              </div>
-              <!-- Post Title -->
-              <div class="card-subtitle">
-                <h3>Title</h3>
-              </div>
-              <div class="post-summary">
-                <input type="text" class="form-control input-md" id="title"/>
-              </div>
-
-              <!-- Post Location -->
-              <div class="card-subtitle">
-                <h3>Location</h3>
-              </div>
-              <div class="post-summary">
-                <input type="text" class="form-control input-md" id="location" placeholder=""/>
-              </div>
-              <!-- Post Details -->
-              <div class="card-subtitle">
-                <h3>Details</h3>
-              </div>
-              <div class="post-summary">
-                <textarea rows="4" class="form-control input-md resize-h-off" id="details"></textarea>
-              </div>
-              <!-- Post Details -->
-              <div class="card-subtitle">
-                <h3>Total Expenses</h3>
-              </div>
-              <div class="post-summary">
-                <input type="text" class="form-control input-md amount" id="totalExpenses" placeholder="0.00"/>
-              </div>
-              <!-- End Post Title & Summary -->
-
-              <!-- Photo Gallery -->
-              <div class="card-photos"><!-- style="display:block;">-->
-                <h3>Photo Gallery</h3>
-              </div>
-              <div class="card-photos post-summary"><!-- style="display:block;">-->
-                <div class="row">
-                  <div class="col-md-12">
-                    <div id="myCarousel" class="carousel slide multi-item-carousel" data-ride="carousel">
-                      <!-- Indicators -->
-                      <ol class="carousel-indicators">
-                      </ol>
-
-                      <!-- Wrapper for slides -->
-                      <div class="carousel-inner">
-                      </div>
-
-                      <!-- Left and right controls -->
-                      <a class="left carousel-control" href="#myCarousel" data-slide="prev"><i class="glyphicon glyphicon-chevron-left"></i></a>
-                      <a class="right carousel-control" href="#myCarousel" data-slide="next"><i class="glyphicon glyphicon-chevron-right"></i></a>
-                    </div>
-                  </div>
-                </div>
-                  <!-- <div class="row" id="image_preview"></div> -->
-              </div>
-
-              <div class="post-more">
-                <!-- <div class="row"> -->
-                  <button class="btn btn-small file-input-parent">Add Cover Photo<input type="file" id="coverPhotoInput" class="file-input" title=" "/></button>
-                  <button class="btn btn-small file-input-parent">Add Photos<input type="file" id="photosInput" class="file-input" title=" " multiple/></button>
-                  <button id="btnPost" class="btn btn-small">Post</button>
-                <!-- </div> -->
-              </div>
-            </div>
-          </div>
-          <!-- End Post -->
-          <div class="col-md-12 col-sm-6">
             <?php
               $userId = $_SESSION['ID'];
-              $result = mysqli_query($dbconnect, "SELECT * FROM posts WHERE UserId = '$userId' ORDER BY PostDate DESC");
+              $result = mysqli_query($dbconnect, "SELECT * FROM posts ORDER BY PostDate DESC");
               while ($row = mysqli_fetch_array($result)) {
             ?>
               <form action="view_post.php" method="get">
                 <input type="hidden" name="postId" value="<?php echo $row['ID']; ?>"/>
+                <input type="hidden" name="view" value="Y"/>
                 <div class="blog-post">
                   <div class="post-info" style="margin: 10px 0px 10px 0px;">
                     <div class="post-comments-count">
@@ -137,9 +49,9 @@ include("../includes/_header.php");
                     </div>
                     <div class="post-comments-count">
                       <i class="glyphicon glyphicon-comment icon-white"></i>
-                        <?php
-                          echo mysqli_num_rows(mysqli_query($dbconnect, "SELECT 1 FROM comments WHERE PostId=$row[ID]"));
-                        ?>
+                      <?php
+                        echo mysqli_num_rows(mysqli_query($dbconnect, "SELECT 1 FROM comments WHERE PostId=$row[ID]"));
+                      ?>
                     </div>
                   </div>
                   <div class="post-upvote <?php

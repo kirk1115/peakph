@@ -25,7 +25,7 @@ include("../includes/_header.php");
   <?php
     include ('../includes/config.php');
 
-    $result = mysqli_query($dbconnect, "SELECT * FROM POSTS WHERE ID = '$_GET[postId]'");
+    $result = mysqli_query($dbconnect, "SELECT * FROM posts WHERE ID = '$_GET[postId]'");
     while ($row = mysqli_fetch_row($result)) {
   ?>
   <input type="hidden" id="postId" value="<?php echo $_GET['postId']; ?>"/>
@@ -37,7 +37,13 @@ include("../includes/_header.php");
 				<div class="col-md-12 col-sm-6">
 					<div class="blog-post">
             <div class="card-image" style="display: block;">
-              <img src="<?php echo 'data:image;base64,'.$row[6]; ?>" id="imgUpload"/>
+              <img src="<?php
+                    if ($row[6] != null) {
+                      echo 'data:image;base64,'.$row[6];
+                    } else {
+                      echo '../img/image-not-found.jpg';
+                    }
+                  ?>" id="imgUpload"/>
             </div>
 						<!-- Post Title -->
 						<div class="card-subtitle">
@@ -71,7 +77,7 @@ include("../includes/_header.php");
 						<!-- End Post Title & Summary -->
 
             <?php
-              $hasGallery = (mysqli_num_rows(mysqli_query($dbconnect, "SELECT * FROM GALLERY WHERE PostId = '$_GET[postId]'")) > 0);
+              $hasGallery = (mysqli_num_rows(mysqli_query($dbconnect, "SELECT * FROM gallery WHERE PostId = '$_GET[postId]'")) > 0);
             ?>
 
             <!-- Photo Gallery -->
@@ -85,7 +91,7 @@ include("../includes/_header.php");
                     <!-- Indicators -->
                     <ol class="carousel-indicators">
                       <?php
-                        $result = mysqli_query($dbconnect, "SELECT * FROM GALLERY WHERE PostId = '$_GET[postId]'");
+                        $result = mysqli_query($dbconnect, "SELECT * FROM gallery WHERE PostId = '$_GET[postId]'");
                         $i = 0;
                         while ($row = mysqli_fetch_assoc($result)) {
                       ?>
@@ -101,7 +107,7 @@ include("../includes/_header.php");
                       <?php
                         include ('../includes/config.php');
 
-                        $result = mysqli_query($dbconnect, "SELECT * FROM GALLERY WHERE PostId = '$_GET[postId]'");
+                        $result = mysqli_query($dbconnect, "SELECT * FROM gallery WHERE PostId = '$_GET[postId]'");
                         $i = 0;
                         while ($row = mysqli_fetch_assoc($result)) {
                       ?>
@@ -114,13 +120,13 @@ include("../includes/_header.php");
                         <!-- For the next two image on the current slide -->
                         <?php
                           $result2 = mysqli_query($dbconnect, "
-                            SELECT * FROM GALLERY
+                            SELECT * FROM gallery
                             WHERE PostId = '$_GET[postId]' AND ID IN (".($row['ID'] + 1).", ".($row['ID'] + 2).")
                               OR (SELECT MAX(ID) FROM GALLERY WHERE PostId = '$_GET[postId]' GROUP BY PostId) = ".$row['ID']."
-                                AND (ID = (SELECT MIN(ID) FROM GALLERY WHERE PostId = '$_GET[postId]' GROUP BY PostId)
-                              OR ID = (SELECT MIN(ID) + 1 FROM GALLERY WHERE PostId = '$_GET[postId]' GROUP BY PostId))
-                              OR (SELECT MAX(ID) - 1 FROM GALLERY WHERE PostId = '$_GET[postId]' GROUP BY PostId) = ".$row['ID']."
-                                AND ID = (SELECT MIN(ID) FROM GALLERY WHERE PostId = '$_GET[postId]' GROUP BY PostId)");
+                                AND (ID = (SELECT MIN(ID) FROM gallery WHERE PostId = '$_GET[postId]' GROUP BY PostId)
+                              OR ID = (SELECT MIN(ID) + 1 FROM gallery WHERE PostId = '$_GET[postId]' GROUP BY PostId))
+                              OR (SELECT MAX(ID) - 1 FROM gallery WHERE PostId = '$_GET[postId]' GROUP BY PostId) = ".$row['ID']."
+                                AND ID = (SELECT MIN(ID) FROM gallery WHERE PostId = '$_GET[postId]' GROUP BY PostId)");
                           while ($row2 = mysqli_fetch_assoc($result2)) {
                         ?>
                         <div class='col-xs-4'>

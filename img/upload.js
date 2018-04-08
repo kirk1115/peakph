@@ -61,7 +61,7 @@ $(document).ready( function() {
               "<div class='col-xs-4'><a href=\"#\"><img class='img-responsive' src='"+e.target.result+"'></a></div>" +
             "</div>");
           i = i - 1;
-          if (i == 0 && total_file > 3) {
+          if (i == 0) {
             $('.multi-item-carousel .item').each(function(){
               // console.log('wow ' + i);
               var next = $(this).next();
