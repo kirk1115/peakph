@@ -12,7 +12,7 @@
 
         <link rel="stylesheet" href="../css/bootstrap.min.css">
         <link rel="stylesheet" href="../css/icomoon-social.css">
-        <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,600,800' rel='stylesheet' type='text/css'>
+        <!-- <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,600,800' rel='stylesheet' type='text/css'> -->
 
         <link rel="stylesheet" href="../css/leaflet.css" />
 		<!--[if lte IE 8]>

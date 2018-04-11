@@ -47,6 +47,7 @@ $(document).ready( function() {
       if (total_file > 0) {
         $('.card-photos').css('display', 'block');
       }
+      console.log('Total files: ' + total_file);
       $('#hasGalleryChanges').val('Y');
       $('.overlay').css('display', 'block');
       $('.carousel-indicators').empty();
@@ -76,6 +77,8 @@ $(document).ready( function() {
               	$(this).siblings(':first').children(':first-child').clone().appendTo($(this));
               }
             });
+            $('.overlay').css('display', 'none');
+          } else {
             $('.overlay').css('display', 'none');
           }
         }

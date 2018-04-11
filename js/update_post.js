@@ -1,6 +1,6 @@
 $(document).ready( function() {
 
-  function saveGallery(postId, imageSrc) {
+  function saveGallery(postId, imageSrc, isLast) {
     console.log('Registering gallery => ' + postId);
     $.ajax({
       url: "../services/register_gallery.php",
@@ -11,12 +11,15 @@ $(document).ready( function() {
       },
       success: function(result){
         console.log(result);
+        if (isLast) {
+          location.reload();
+        }
       }
     });
   }
 
   function updateGallery() {
-    var postId = $('#postId').val(), gallerySrc;
+    var postId = $('#postId').val(), gallerySrc, galleryLen, i = 1;
     console.log('Deleting gallery => ' + postId);
     $.ajax({
       url: '../services/delete_gallery.php',
@@ -27,9 +30,14 @@ $(document).ready( function() {
       success: function(result) {
         console.log(result);
         if (result > 0) {
+          galleryLen = $('.carousel-inner').children().length;
+          console.log('Gallery lengh: ' + galleryLen);
           $('.carousel-inner').children().each(function() {
             gallerySrc = $(this).children().first().children().children().attr('src');
-            saveGallery(postId, gallerySrc);
+            console.log('Saving >> ' + i);
+            console.log('Saving >> ' + (i === galleryLen));
+            saveGallery(postId, gallerySrc, i === galleryLen);
+            i++;
           });
         }
       },
@@ -45,6 +53,7 @@ $(document).ready( function() {
       coverPhoto = $('#imgUpload').attr('src');
     }
     console.log('Updating => ' + $('#postId').val());
+    $('.overlay').css('display', 'block');
     $.ajax({
       url: '../services/update_post.php',
       type: 'post',

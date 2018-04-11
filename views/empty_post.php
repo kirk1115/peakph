@@ -9,6 +9,7 @@ session_start();
 //     print '<script type="text/javascript">alert("' . $_GET['Message'] . '");</script>';
 // }
 include("../includes/_header.php");
+include("../views/_loading.php");
 ?>
   <input type="hidden" id="userId" value="<?php echo $_SESSION['ID']; ?>"/>
   <input type="hidden" id="hasGalleryChanges" value="N"/>
@@ -120,13 +121,21 @@ include("../includes/_header.php");
                         <!-- For the next two image on the current slide -->
                         <?php
                           $result2 = mysqli_query($dbconnect, "
-                            SELECT * FROM gallery
-                            WHERE PostId = '$_GET[postId]' AND ID IN (".($row['ID'] + 1).", ".($row['ID'] + 2).")
-                              OR (SELECT MAX(ID) FROM GALLERY WHERE PostId = '$_GET[postId]' GROUP BY PostId) = ".$row['ID']."
-                                AND (ID = (SELECT MIN(ID) FROM gallery WHERE PostId = '$_GET[postId]' GROUP BY PostId)
-                              OR ID = (SELECT MIN(ID) + 1 FROM gallery WHERE PostId = '$_GET[postId]' GROUP BY PostId))
-                              OR (SELECT MAX(ID) - 1 FROM gallery WHERE PostId = '$_GET[postId]' GROUP BY PostId) = ".$row['ID']."
-                                AND ID = (SELECT MIN(ID) FROM gallery WHERE PostId = '$_GET[postId]' GROUP BY PostId)");
+                            (SELECT * FROM gallery
+                            WHERE PostId = '$_GET[postId]' AND ID > ".($row['ID'])."
+                            LIMIT 2)
+                            UNION ALL
+                            (SELECT * FROM gallery
+                            WHERE PostId = '$_GET[postId]'
+                              AND (SELECT COUNT(*) FROM gallery WHERE PostId = '$_GET[postId]' AND ID > ".($row['ID']).") IN (0, 1)
+                              AND (SELECT COUNT(*) FROM gallery WHERE PostId = '$_GET[postId]') > 3
+                            LIMIT 1)
+                            UNION ALL
+                            (SELECT * FROM gallery
+                            WHERE PostId = '$_GET[postId]'
+                              AND (SELECT COUNT(*) FROM gallery WHERE PostId = '$_GET[postId]' AND ID > ".($row['ID']).") = 0
+                              AND (SELECT COUNT(*) FROM gallery WHERE PostId = '$_GET[postId]') > 3
+                            LIMIT 1, 1)");
                           while ($row2 = mysqli_fetch_assoc($result2)) {
                         ?>
                         <div class='col-xs-4'>

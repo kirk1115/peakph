@@ -9,7 +9,9 @@ session_start();
 //     print '<script type="text/javascript">alert("' . $_GET['Message'] . '");</script>';
 // }
 include("../includes/_header.php");
+include("../views/_loading.php");
 ?>
+
   <input type="hidden" id="userId" value="<?php echo $_SESSION['ID']; ?>"/>
   <!-- Page Title -->
   <div class="section section-breadcrumbs">

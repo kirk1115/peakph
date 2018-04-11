@@ -9,6 +9,7 @@ session_start();
 //     print '<script type="text/javascript">alert("' . $_GET['Message'] . '");</script>';
 // }
 include("../includes/_header.php");
+include("../views/_loading.php");
 ?>
     <input type="hidden" id="userId" value="<?php echo $_SESSION['ID']; ?>"/>
     <!-- Page Title -->
@@ -271,13 +272,6 @@ include("../includes/_header.php");
               <div class="footer-copyright">&copy; 2018 PeakPH. All rights reserved.</div>
             </div>
           </div>
-        </div>
-      </div>
-
-      <div class="overlay">
-        <div class="overlay-items">
-          <span class="glyphicon glyphicon-refresh glyphicon-refresh-animate"></span>
-          <p class="overlay-label">Loading...</p>
         </div>
       </div>
 
